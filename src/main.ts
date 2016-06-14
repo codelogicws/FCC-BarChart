@@ -73,10 +73,3 @@ function type(d) {
   d.data = +d.data;
   return d;
 }
-
-
-
-
-
-
-

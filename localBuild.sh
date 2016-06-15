@@ -1,4 +1,5 @@
 cp -al ./html/* ./built/
+cp -al ./es5/* ./built/
 cp -al ./css ./built
 
 file1="./publish.sh"

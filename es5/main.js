@@ -3,6 +3,6 @@ var canvas = d3.select('body')
     .attr('width', 500)
     .attr('height', 500)
 
-var circle = canvas.append('rect')
+var rect = canvas.append('rect')
     .attr('width', 5)
     .attr('height', 100)

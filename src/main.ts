@@ -12,11 +12,17 @@ function converToUsableObjects(array){
   })
 }
 
-console.log("Hello")
+function maxOfData(data){
+	return data.reduce((colect, element)=>{
+		return Math.max(colect, element.data)
+	}, 0)
+}
 
 function displayData(allData){
+	let maxHeight = maxOfData(allData)
+
 	let heightScale = d3.scale.linear()
-	.domain([0, 30000])
+	.domain([0, maxHeight])
 	.range([0, 500])
 
 	let canvas = d3.select('body')

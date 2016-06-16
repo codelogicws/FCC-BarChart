@@ -8,15 +8,26 @@ fetch(url)
 
 function converToUsableObjects(array){
   return array.map((element)=>{
-    return {date: element[0], close: element[1]}
+    return {date: element[0], data: element[1]}
   })
 }
 
-var canvas = d3.select('body')
-    .append('svg')
-    .attr('width', 500)
-    .attr('height', 500)
+console.log("Hello")
 
-var rect = canvas.append('rect')
-    .attr('width', 5)
-    .attr('height', 100)
+function displayData(allData){
+	var canvas = d3.select('body')
+	.append('svg')
+	.attr('width', 500)
+	.attr('height', 500)
+
+	var bars = canvas
+	.selectAll("rect")
+	.data(allData)
+	.enter()
+	.append('rect')
+	.attr('width', 5)
+	.attr('height', d=>d.data)
+	.attr('x', (d, i)=>i*10)
+	.attr('y', 10)
+}
+

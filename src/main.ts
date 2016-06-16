@@ -15,19 +15,23 @@ function converToUsableObjects(array){
 console.log("Hello")
 
 function displayData(allData){
-	var canvas = d3.select('body')
+	let heightScale = d3.scale.linear()
+	.domain([0, 30000])
+	.range([0, 500])
+
+	let canvas = d3.select('body')
 	.append('svg')
 	.attr('width', 500)
 	.attr('height', 500)
 
-	var bars = canvas
+	let bars = canvas
 	.selectAll("rect")
 	.data(allData)
 	.enter()
 	.append('rect')
-	.attr('width', 5)
-	.attr('height', d=>d.data)
-	.attr('x', (d, i)=>i*10)
-	.attr('y', 10)
+	.attr('width', 2)
+	.attr('height', d=>heightScale(d.data))
+	.attr('y', 0)
+	.attr('x', (d, i)=>i*2)
 }
 

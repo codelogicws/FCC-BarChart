@@ -1,6 +1,6 @@
 const url = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json"
 const HEIGHT = 500
-const WIDTH = 500
+const WIDTH = 1000
 
 fetch(url)
   .then(raw=>raw.json())
@@ -9,9 +9,9 @@ fetch(url)
   .then((arrayOfObjects)=>{displayData(arrayOfObjects)})
 
 function converToUsableObjects(array){
-  return array.map((element)=>{
-    return {date: element[0], data: element[1]}
-  })
+	return array.map((element)=>{
+		return {date: element[0], data: element[1]}
+	})
 }
 
 function maxOfData(data){
@@ -29,8 +29,8 @@ function displayData(allData){
 
 	let canvas = d3.select('body')
 	.append('svg')
-	.attr('width', 500)
-	.attr('height', 500)
+	.attr('width', WIDTH)
+	.attr('height', HEIGHT)
 
 	let bars = canvas
 	.selectAll("rect")

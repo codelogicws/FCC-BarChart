@@ -1,4 +1,6 @@
 const url = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json"
+const HEIGHT = 500
+const WIDTH = 500
 
 fetch(url)
   .then(raw=>raw.json())
@@ -19,11 +21,11 @@ function maxOfData(data){
 }
 
 function displayData(allData){
-	let maxHeight = maxOfData(allData)
+	const maxData = maxOfData(allData)
 
 	let heightScale = d3.scale.linear()
-	.domain([0, maxHeight])
-	.range([0, 500])
+	.domain([0, maxData])
+	.range([0, HEIGHT])
 
 	let canvas = d3.select('body')
 	.append('svg')
@@ -37,7 +39,7 @@ function displayData(allData){
 	.append('rect')
 	.attr('width', 2)
 	.attr('height', d=>heightScale(d.data))
-	.attr('y', 0)
+	.attr('y', d=>HEIGHT - heightScale(d.data))
 	.attr('x', (d, i)=>i*2)
 }
 

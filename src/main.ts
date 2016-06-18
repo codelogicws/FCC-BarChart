@@ -46,9 +46,9 @@ function displayData(allData){
 	.data(allData)
 	.enter()
 	.append('rect')
-	.attr('width', 2)
-	.attr('height', d=>heightScale(d.data))
-	.attr('y', 0)
+	.attr('width', 3)
+	.attr('height', d=>HEIGHT - MARGIN - heightScale(d.data))
+	.attr('y', d=>heightScale(d.data))
 	.attr('x', (d, i)=>i*barWidth)
 
 	canvas.append('g')

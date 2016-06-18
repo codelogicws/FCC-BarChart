@@ -16,24 +16,28 @@ function converToUsableObjects(array){
 }
 
 function maxOfData(data){
-	return data.reduce((colect, element)=>{
-		return Math.max(colect, element.data)
+	return data.reduce((collect, element)=>{
+		return Math.max(collect, element.data)
 	}, 0)
 }
 
 function displayData(allData){
 	const maxData = maxOfData(allData)
 	const barWidth = (WIDTH-MARGIN) / allData.length
-	console.log(barWidth)
 
 	let heightScale = d3.scale.linear()
 	.domain([0, maxData])
 	.range([0, HEIGHT-MARGIN])
 
+	let yAxis = d3.svg.axis()
+	.scale(heightScale)
+
 	let canvas = d3.select('body')
 	.append('svg')
 	.attr('width', WIDTH)
 	.attr('height', HEIGHT)
+	.append('g')
+	.attr('transform', 'translate(40, 0)')
 
 	let bars = canvas
 	.selectAll("rect")
@@ -42,7 +46,10 @@ function displayData(allData){
 	.append('rect')
 	.attr('width', 2)
 	.attr('height', d=>heightScale(d.data))
-	.attr('y', d=>HEIGHT - heightScale(d.data) - MARGIN)
-	.attr('x', (d, i)=>i*barWidth+MARGIN)
+	.attr('y', d=>HEIGHT - heightScale(d.data))
+	.attr('x', (d, i)=>i*barWidth)
+
+	canvas.append('g')
+	.call(yAxis)
 }
 

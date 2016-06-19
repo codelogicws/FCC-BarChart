@@ -31,7 +31,7 @@ function displayData(allData){
 	.range([HEIGHT-MARGIN, 0])
 
 	let dateScale = d3.scale.linear()
-	.domain([0, maxData])
+	.domain([1947, 2015])
 	.range([0, WIDTH-MARGIN])
 
 	let yAxis = d3.svg.axis()
@@ -66,6 +66,7 @@ function displayData(allData){
 
 	chart.append('g')
 	.call(dateAxis)
+	.attr('transform', 'translate(0, '+ ( HEIGHT-MARGIN ) +')')
 }
 
 //tool test

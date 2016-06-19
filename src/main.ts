@@ -56,13 +56,18 @@ function displayData(allData){
 
 	let bars = chart
 	.selectAll("rect")
+	.attr('class', 'bar')
 	.data(allData)
 	.enter()
 	.append('rect')
-	.attr('width', 3)
+	.attr('class', 'tooltip')
+	.attr('width', barWidth)
 	.attr('height', d=>HEIGHT - MARGIN - heightScale(d.data))
 	.attr('y', d=>heightScale(d.data))
 	.attr('x', (d, i)=>i*barWidth)
+	.append('div')
+	.attr('class', 'tooltiptext')
+	.text('foo')
 
 	chart.append('g')
 	.call(yAxis)

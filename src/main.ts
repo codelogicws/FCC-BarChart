@@ -25,13 +25,15 @@ function displayData(allData){
 	console.log(JSON.stringify(allData))
 	const maxData = maxOfData(allData)
 	const barWidth = (WIDTH-MARGIN) / allData.length
+	const lowestDate = allData[0].date.substring(0, 4)
+	const heighestDate = allData[allData.length-1].date.substring(0,4)
 
 	let heightScale = d3.scale.linear()
 	.domain([0, maxData])
 	.range([HEIGHT-MARGIN, 0])
 
 	let dateScale = d3.scale.linear()
-	.domain([1947, 2015])
+	.domain([lowestDate, heighestDate])
 	.range([0, WIDTH-MARGIN])
 
 	let yAxis = d3.svg.axis()

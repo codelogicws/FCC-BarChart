@@ -10,7 +10,7 @@ rect {
 }
 
 rect:hover {
-    fill: red;
+    fill: steelblue;
 }
 
 .TheTitle {

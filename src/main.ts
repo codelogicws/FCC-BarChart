@@ -43,6 +43,7 @@ function displayData(allData){
 	let dateAxis = d3.svg.axis()
 	.scale(dateScale)
 	.orient("bottom")
+	.tickFormat(d=>d)
 
 	let canvas = d3.select('body')
 	.append('svg')

@@ -13,4 +13,12 @@ rect:hover {
     fill: red;
 }
 
+.TheTitle {
+    font-size: 300%;
+    color: blue;
+    width: 1000;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
 

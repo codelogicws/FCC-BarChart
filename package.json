@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
+  "typings": "./typings/index.d.ts",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ./built/test",
     "echo": "echo 'Hello World'",
     "tsc": "tsc -w",
+    "python": "python",
     "start": "./localBuild.sh"
   },
   "author": "",

@@ -22,7 +22,6 @@ function maxOfData(data){
 }
 
 function displayData(allData){
-	console.log(JSON.stringify(allData))
 	const maxData = maxOfData(allData)
 	const barWidth = (WIDTH-MARGIN) / allData.length
 
@@ -30,18 +29,28 @@ function displayData(allData){
 	.domain([0, maxData])
 	.range([HEIGHT-MARGIN, 0])
 
+	let dateScale = d3.scale.linear()
+	.domain([0, maxData])
+	.range([HEIGHT-MARGIN, 0])
+
 	let yAxis = d3.svg.axis()
 	.scale(heightScale)
 	.orient("left")
+
+	let dateAxis = d3.svg.axis()
+	.scale(dateScale)
+	.orient("bottom")
 
 	let canvas = d3.select('body')
 	.append('svg')
 	.attr('width', WIDTH)
 	.attr('height', HEIGHT)
-	.append('g')
-	.attr('transform', 'translate(40, 0)')
 
-	let bars = canvas
+	let chart = canvas
+	.append('g')
+	.attr('transform', 'translate(40, 20)')
+
+	let bars = chart
 	.selectAll("rect")
 	.data(allData)
 	.enter()
@@ -51,7 +60,7 @@ function displayData(allData){
 	.attr('y', d=>heightScale(d.data))
 	.attr('x', (d, i)=>i*barWidth)
 
-	canvas.append('g')
+	chart.append('g')
 	.call(yAxis)
 }
 

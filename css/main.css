@@ -9,49 +9,8 @@ rect {
     stroke: black;
 }
 
-/* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+rect:hover {
+    fill: red;
 }
 
-.topcorner{
-	position: absolute;
-	top: 0;
-	left: 0;
-	font-size: 50px;
-}
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-	width: 100px;
-	height: 100px;
-    visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
- 
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-}
-
-svg rect .tooltiptext{
-     visibility: hidden;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-rect:hover .tooltiptext {
-    visibility: visible;
-}
-
-.tooltip:hover{
-     fill: red;
-}

@@ -2,6 +2,7 @@ const url = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData
 const HEIGHT = 600
 const WIDTH = 1000
 const MARGIN = 50
+const MONTHS = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 fetch(url)
   .then(raw=>raw.json())
@@ -19,6 +20,11 @@ function maxOfData(data){
 	return data.reduce((collect, element)=>{
 		return Math.max(collect, element.data)
 	}, 0)
+}
+
+function convertToHumanReadable(data){
+	let dateInfo = data.date.split('-')
+	return "GDP: " + data.data + "\nYear: " + dateInfo[0] + " Month: " + MONTHS[parseInt(dateInfo[1])]
 }
 
 function displayData(allData){
@@ -65,9 +71,8 @@ function displayData(allData){
 	.attr('height', d=>HEIGHT - MARGIN - heightScale(d.data))
 	.attr('y', d=>heightScale(d.data))
 	.attr('x', (d, i)=>i*barWidth)
-	.append('div')
-	.attr('class', 'tooltiptext')
-	.text('foo')
+	.append('title')
+	.text(d=>{return convertToHumanReadable(d)})
 
 	chart.append('g')
 	.call(yAxis)

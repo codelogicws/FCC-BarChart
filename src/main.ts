@@ -22,6 +22,7 @@ function maxOfData(data){
 }
 
 function displayData(allData){
+	console.log(JSON.stringify(allData))
 	const maxData = maxOfData(allData)
 	const barWidth = (WIDTH-MARGIN) / allData.length
 
@@ -31,7 +32,7 @@ function displayData(allData){
 
 	let dateScale = d3.scale.linear()
 	.domain([0, maxData])
-	.range([HEIGHT-MARGIN, 0])
+	.range([0, WIDTH-MARGIN])
 
 	let yAxis = d3.svg.axis()
 	.scale(heightScale)
@@ -62,6 +63,9 @@ function displayData(allData){
 
 	chart.append('g')
 	.call(yAxis)
+
+	chart.append('g')
+	.call(dateAxis)
 }
 
 //tool test
